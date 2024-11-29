@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from posts.models import Post
 
 
-class Favourites(models.Model):
+class Favourite(models.Model):
     """
     Favourites model, related to 'owner' and 'post'.
     'owner' is a User instance and 'post' is a Post instance.
