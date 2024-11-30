@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'favourites',
     'posts',
     'profiles',
+    
+    'django_countries',
 ]
 
 MIDDLEWARE = [

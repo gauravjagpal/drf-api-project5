@@ -2,9 +2,11 @@ from django.http import Http404
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django_countries import countries
 from .models import Post
 from .serializers import PostSerializer
 from drf_api_project_5.permissions import IsOwnerOrReadOnly
+
 
 class PostList(APIView):
     serializer_class = PostSerializer
@@ -69,3 +71,22 @@ class PostDetail(APIView):
         return Response(
             status=status.HTTP_204_NO_CONTENT
         )
+    
+
+class CountryList(APIView):
+
+    """
+
+    API view to list all countries
+
+    """
+
+    permission_classes = [permissions.AllowAny]
+
+
+
+    def get(self, request):
+
+        all_countries = [{"code": code, "name": name} for code, name in countries]
+
+        return Response(all_countries)
