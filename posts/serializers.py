@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from posts.models import Post
+from favourites.models import Favourite
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -7,6 +8,9 @@ class PostSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    favourite_id = serializers.SerializerMethodField()
+    favourites_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -35,16 +39,25 @@ class PostSerializer(serializers.ModelSerializer):
         """Modify the representation to add the country_name field."""
         # Get the default representation from the parent class
         representation = super().to_representation(instance)
-        
         # Add the country name to the representation
         representation['country'] = instance.country.name  # Country name instead of code
-        
         return representation
+    
+    def get_favourite_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            favourite = Favourite.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return favourite.id if favourite else None
+        return None
+
 
     class Meta:
         model = Post
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
-            'title', 'content', 'image', 'country'
+            'title', 'content', 'image', 'country',
+            'favourite_id', 'favourites_count', 'comments_count',
         ]
