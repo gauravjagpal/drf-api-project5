@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_api_project_5.permissions import IsOwnerOrReadOnly
 from rest_framework.response import Response
 from django_countries import countries
@@ -20,15 +21,23 @@ class PostList(generics.ListCreateAPIView):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend
+    ]
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'favourites__owner__profile',
+        'owner__profile',
     ]
     search_fields = [
         'owner__username',
         'title',
+        'country'
     ]
     ordering_fields = [
         'favourites_count',
         'comments_count',
         'favourites__created_at',
+        'country'
     ]
 
     def perform_create(self, serializer):
