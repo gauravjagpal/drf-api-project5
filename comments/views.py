@@ -1,19 +1,20 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from drf_api_project_5.permissions import IsOwnerOrReadOnly
+from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
-
 class CommentList(generics.ListCreateAPIView):
-    """
-    List comments or create a comment if logged in.
-    """
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['post']
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'post',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from drf_api_project_5.permissions import IsOwnerOrReadOnly
 from .models import Favourite
-from favourites.serializers import FavouriteSerializer
+from .serializers import FavouriteSerializer
 
 class FavouriteList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

@@ -1,6 +1,6 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from favourites.models import Favourite
+from .models import Favourite
 
 
 class FavouriteSerializer(serializers.ModelSerializer):

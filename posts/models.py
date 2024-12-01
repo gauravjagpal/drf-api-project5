@@ -15,7 +15,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_xcwblp', blank=True
     )
-    country = CountryField(blank=False, null=True, default=None)  # Default to United States
+    country = CountryField(blank=False, null=True, default=None)  # Default ---
 
     class Meta:
         ordering = ['-created_at']

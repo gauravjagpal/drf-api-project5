@@ -36,7 +36,6 @@ class PostList(generics.ListCreateAPIView):
     ordering_fields = [
         'favourites_count',
         'comments_count',
-        'favourites__created_at',
         'country'
     ]
 
@@ -46,7 +45,10 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        comments_count = Count('comment', distinct= True),
+        favourites_count = Count('favourites', distinct= True)
+    )
     
 
 class CountryList(generics.ListAPIView):
