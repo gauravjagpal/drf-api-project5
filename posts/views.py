@@ -15,7 +15,7 @@ class PostList(generics.ListCreateAPIView):
         permissions.IsAuthenticatedOrReadOnly
     ]
     queryset = Post.objects.annotate(
-        favourite_count=Count('favourites', distinct=True),
+        favourites_count=Count('favourites', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
