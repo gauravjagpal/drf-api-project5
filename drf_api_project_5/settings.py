@@ -63,6 +63,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
 'localhost',
 'https://plan-et-continentally-d407d6f9ae7a.herokuapp.com',
+'drf-api-project-5-47dcc9e35444.herokuapp.com',
 'http://localhost:3000',
 os.environ.get('ALLOWED_HOST'),
 ]
@@ -72,6 +73,7 @@ if 'CLIENT_ORIGIN' in os.environ:
         "http://localhost:3000",
         "https://plan-et-continentally-d407d6f9ae7a.herokuapp.com",
         os.environ.get("CLIENT_ORIGIN"),
+        os.environ.get("CLIENT_ORIGIN_DEV"),
         ]
     
 if 'CLIENT_ORIGIN_DEV' in os.environ:
