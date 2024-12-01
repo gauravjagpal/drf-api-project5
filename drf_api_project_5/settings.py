@@ -82,8 +82,8 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
         # Extract the matched portion if there's a match
         extracted_url = match.group(0)
         CORS_ALLOWED_ORIGIN_REGEXES = [
-            rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-        ]
+            r'.*',  # allows all origins (be cautious with this in production)
+            ]
     else:
         # Handle the case when no match is found, e.g., log a warning or set a default
         print("No match found for CLIENT_ORIGIN_DEV")
