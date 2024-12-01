@@ -62,8 +62,8 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
 'localhost',
-'react-test-app-gj-0a2d12296e7e.herokuapp.com',
-'8000-gauravjagpal-drfapi-1h47xii4ah2.ws-eu116.gitpod.io',
+'https://plan-et-continentally-d407d6f9ae7a.herokuapp.com',
+'http://localhost:3000',
 os.environ.get('ALLOWED_HOST'),
 ]
 
