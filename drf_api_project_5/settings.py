@@ -68,13 +68,12 @@ ALLOWED_HOSTS = [
 os.environ.get('ALLOWED_HOST'),
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:3000",
-        "https://plan-et-continentally-d407d6f9ae7a.herokuapp.com",
-        os.environ.get("CLIENT_ORIGIN"),
-        os.environ.get("CLIENT_ORIGIN_DEV"),
-        ]
+if "CLIENT_ORIGIN" in os.environ:
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.codeinstitute-ide\.net$"
+    ]
     
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     client_origin = os.environ.get('CLIENT_ORIGIN_DEV', '')
