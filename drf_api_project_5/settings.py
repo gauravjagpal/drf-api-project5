@@ -74,23 +74,6 @@ if "CLIENT_ORIGIN" in os.environ:
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.codeinstitute-ide\.net$"
     ]
-    
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    client_origin = os.environ.get('CLIENT_ORIGIN_DEV', '')
-    
-    # Perform regex match
-    match = re.match(r'^.+-', client_origin, re.IGNORECASE)
-    
-    if match:
-        # Extract the matched portion if there's a match
-        extracted_url = match.group(0)
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            r'.*',  # allows all origins (be cautious with this in production)
-            ]
-    else:
-        # Handle the case when no match is found, e.g., log a warning or set a default
-        print("No match found for CLIENT_ORIGIN_DEV")
-        CORS_ALLOWED_ORIGIN_REGEXES = []
 
 
 CORS_ALLOW_CREDENTIALS = True
