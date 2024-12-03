@@ -46,7 +46,8 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.annotate(
-    comments_count=Count('comment', distinct=True)
+        favourites_count=Count('favourites', distinct=True),
+        comments_count=Count('comment', distinct=True)
     )
 
 class CountryList(generics.ListAPIView):

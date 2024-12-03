@@ -29,6 +29,16 @@ class PostSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
     
+    
+    def get_favourite_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            favourite = Favourite.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return favourite.id if favourite else None
+        return None
+    
     def validate_country(self, value):
         """Validate that the country field is provided"""
         if not value:
@@ -42,15 +52,6 @@ class PostSerializer(serializers.ModelSerializer):
         # Add the country name to the representation
         representation['country'] = instance.country.name  # Country name instead of code
         return representation
-    
-    def get_favourite_id(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            favourite = Favourite.objects.filter(
-                owner=user, post=obj
-            ).first()
-            return favourite.id if favourite else None
-        return None
 
 
     class Meta:
