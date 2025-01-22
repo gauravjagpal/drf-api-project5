@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 
 
@@ -13,6 +14,7 @@ class Trip(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_profile_s10tik'
     )
+    activities = models.JSONField(blank=True, default=list)
 
     class Meta:
         ordering = ['-created_at']

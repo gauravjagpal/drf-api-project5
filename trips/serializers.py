@@ -17,5 +17,5 @@ class TripSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'name',
             'country', 'image', 'is_owner', 'trips_count',
-            'owner_id'
+            'owner_id', 'activities'
         ]
