@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Trip
-from trips.models import Trip
 
 class TripSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -15,7 +14,7 @@ class TripSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trip
         fields = [
-            'id', 'owner', 'created_at', 'updated_at', 'name',
+            'id', 'owner', 'created_at', 'updated_at', 'trip',
             'country', 'image', 'is_owner', 'trips_count',
             'owner_id', 'activities'
         ]
