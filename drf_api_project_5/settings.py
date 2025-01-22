@@ -107,6 +107,7 @@ INSTALLED_APPS = [
     'comments',
     'favourites',
     'followers',
+    'trips',
 
     'django_countries'
 ]
