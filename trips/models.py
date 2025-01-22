@@ -6,7 +6,7 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class Trip(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     trip = models.CharField(max_length=255, blank=True)
