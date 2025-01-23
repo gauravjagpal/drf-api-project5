@@ -5,7 +5,7 @@ from drf_api_project_5.permissions import IsOwnerOrReadOnly
 from .models import Trip
 from .serializers import TripSerializer
 
-class TripList(generics.ListAPIView):
+class TripList(generics.ListCreateAPIView):
     """
     List all trips
     """
