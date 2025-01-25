@@ -19,7 +19,8 @@ class Trip(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"{self.owner}'s trip"
+        country_display = self.get_country_display()
+        return f"{self.owner.username}'s trip to {country_display}"
     
 def create_trip(sender, instance, created, **kwargs):
     if created:

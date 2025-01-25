@@ -12,6 +12,20 @@ class TripSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
+    
+    def validate_country(self, value):
+        """Validate that the country field is provided"""
+        if not value:
+            raise serializers.ValidationError("Country field is required.")
+        return value
+    
+    def to_representation(self, instance):
+        """Modify the representation to add the country_name field."""
+        # Get the default representation from the parent class
+        representation = super().to_representation(instance)
+        # Add the country name to the representation
+        representation['country'] = instance.country.name  # Country name instead of code
+        return representation
 
     class Meta:
         model = Trip
