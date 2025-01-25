@@ -9,7 +9,7 @@ class TripList(generics.ListCreateAPIView):
     """
     List all trips
     """
-    queryset = Trip.objects.all()
+    queryset = Trip.objects.all().order_by('-created_at')
     serializer_class = TripSerializer
     filter_backends = [
         filters.OrderingFilter,
