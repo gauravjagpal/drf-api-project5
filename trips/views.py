@@ -17,6 +17,9 @@ class TripList(generics.ListCreateAPIView):
         filters.OrderingFilter,
         DjangoFilterBackend,
         ]
+    filterset_fields = [
+        'owner__profile',
+    ]
     ordering_fields = [
         'trips_count',
     ]
