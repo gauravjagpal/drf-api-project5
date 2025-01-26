@@ -13,6 +13,9 @@ class TripList(generics.ListCreateAPIView):
     """
     queryset = Trip.objects.all().order_by('-created_at')
     serializer_class = TripSerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+    ]
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
