@@ -15,6 +15,7 @@ class TripList(generics.ListCreateAPIView):
     serializer_class = TripSerializer
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
         DjangoFilterBackend,
         ]
     filterset_fields = [
