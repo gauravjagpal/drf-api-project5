@@ -12,27 +12,7 @@ class TripList(generics.ListCreateAPIView):
     List all trips
     """
     queryset = Trip.objects.all().order_by('-created_at')
-    serializer_class = TripSerializer
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
-    filter_backends = [
-        filters.OrderingFilter,
-        filters.SearchFilter,
-        DjangoFilterBackend,
-        ]
-    filterset_fields = [
-        'owner__profile',
-    ]
-    search_fields = [
-        'owner__username',
-        'trip',
-        'country',
-        'activities'
-    ]
-    ordering_fields = [
-        'trips_count',
-    ]
+
 
     def perform_create(self, serializer):
         # Associate the logged-in user as the owner of the trip

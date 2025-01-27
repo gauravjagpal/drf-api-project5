@@ -8,6 +8,7 @@ class TripSerializer(serializers.ModelSerializer):
     owner_id = serializers.ReadOnlyField(source='owner.id')
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    country = serializers.CharField(source='country.name')
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -33,6 +34,7 @@ class TripSerializer(serializers.ModelSerializer):
         # If the value is not set during update, use the existing instance value
         if not value and self.instance:
             return self.instance.country
+        print(value)
         return value
     
     def to_representation(self, instance):

@@ -11,6 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     favourite_id = serializers.SerializerMethodField()
     favourites_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    country = serializers.CharField(source='country.name')
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -40,9 +41,12 @@ class PostSerializer(serializers.ModelSerializer):
         return None
     
     def validate_country(self, value):
-        """Validate that the country field is provided"""
-        if not value:
-            raise serializers.ValidationError("Country field is required.")
+        """
+        Validate the country field, defaulting to the current value if not provided.
+        """
+        # If the value is not set during update, use the existing instance value
+        if not value and self.instance:
+            return self.instance.country
         return value
     
     def to_representation(self, instance):
