@@ -11,7 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     favourite_id = serializers.SerializerMethodField()
     favourites_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    country = serializers.CharField(source='country.name')
+
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:

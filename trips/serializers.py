@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Trip
-
+from django_countries.serializer_fields import CountryField
 class TripSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -8,7 +8,7 @@ class TripSerializer(serializers.ModelSerializer):
     owner_id = serializers.ReadOnlyField(source='owner.id')
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    country = serializers.CharField(source='country.name')
+    country=CountryField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
