@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from posts.models import Post
 from favourites.models import Favourite
-
+from django_countries.serializer_fields import CountryField
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -11,7 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     favourite_id = serializers.SerializerMethodField()
     favourites_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-
+    country=CountryField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
