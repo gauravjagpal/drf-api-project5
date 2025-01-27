@@ -27,9 +27,12 @@ class TripSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
     
     def validate_country(self, value):
-        """Validate that the country field is provided"""
-        if not value:
-            raise serializers.ValidationError("Country field is required.")
+        """
+        Validate the country field, defaulting to the current value if not provided.
+        """
+        # If the value is not set during update, use the existing instance value
+        if not value and self.instance:
+            return self.instance.country
         return value
     
     def to_representation(self, instance):
