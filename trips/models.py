@@ -8,7 +8,7 @@ class Trip(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    trip = models.CharField(max_length=255, blank=True)
+    trip = models.CharField(max_length=255)
     country = CountryField(blank=False, null=True, default=None)  
     image = models.ImageField(
         upload_to='images/', default='../default_profile_s10tik'
