@@ -1,131 +1,164 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# drf-api-project5
 
-Welcome Gaurav Jagpal,
+Portfolio 5 project as part of the Diploma in Full Stack Software Development by Code Institute. This part of the project uses:
+- Python+Django
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+___
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+This is the backend project for the Plan-et Continentally app, gives users the ability to leave reviews and has a link for them to purchase the book.
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+[Link to live site](https://drf-api-project-5-47dcc9e35444.herokuapp.com/)
 
-A blue button should appear to click: _Make Public_,
+[Link to front end site](https://plan-et-continentally-d407d6f9ae7a.herokuapp.com/)
 
-Another blue button should appear to click: _Open Browser_.
+## CONTENTS
+- [drf-api-project5](#gauravs-book-reviews)
+  - [CONTENTS](#contents)
+  - [Site Objectives](#site-objectives)
+- [User Stories](#user-stories)
+  - [Visitor Goals](#visitor-goals)
+- [Features](#features)
+  - [Future Features](#future-features)
+- [Technologies Used](#technologies-used)
+- [Programming Languages, Frameworks and Libraries Used](#programming-languages-frameworks-and-libraries-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  - [Github Deployment](#github-deployment)
+  - [Cloning and Forking](#cloning-and-forking)
+  - [Repository deployment via Heroku](#repository-deployment-via-heroku)
+  - [Deployment of the app](#deployment-of-the-app)
+- [Credits](#credits)
+- [Acknowledgments and Thanks](#acknowledgments-and-thanks)
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+# Site Objectives
+The goal of this site is to create a stable database structure, which will then be used in the front project. The site needs to allow a user to login, interact with other users and post their own trips.
 
-A blue button should appear to click: _Make Public_,
+My two main objectives were:
 
-Another blue button should appear to click: _Open Browser_.
+- ### Make use of available backend functionality
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+  The use of the backend framework allows users to create a profile, leave a review and/or edit any of the books on the site (with authorisation), as well as deleting their own comments should they wish to.
 
-To log into the Heroku toolbelt CLI:
+- ### Store data on an external cloud database
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+  I used a PostgreSQL database for this project.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+# User Stories
+The user stories are documented in the front end repository, [Link Here](https://github.com/users/gauravjagpal/projects/3)
 
-### Connecting your Mongo database
+## Visitor Goals
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+- When not logged in, view all posts/filter down
+- When logged in, visit all posts/filter down.
+- Create Posts
+- Create a trip
+- View own trips
+- Favourite a post
+- Comment on a post
+___
 
-------
+# Features
 
-## Release History
+## Future Features
+- Add functionality for users to plan trips with each other
+- Add more data options, such as Continent or City.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+# Technologies Used
 
-**June 18, 2024,** Add Mongo back into template
+Here are the technologies used to build this project:
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+- [Github](https://github.com) To host and store the data for the site.
+- [Gitpod](https://gitpod.io/workspaces), the IDE where the site was built.
+- [PEP8 Validator](https://pep8ci.herokuapp.com/) Used to check python code for errors
+- [PostgresSQL](https://dbs.ci-dbs.net/) Used to store PostgreSQL database.
+- [Cloudinary](https://cloudinary.com/) Used as cloud storage for images uploaded as part of the blog posts
+- [Heroku](https://id.heroku.com/) Used to deploy the project
 
-**May 28 2024:** Fix Mongo and Links installs
+# Programming Languages, Frameworks and Libraries Used
+## Programming Languages
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+- [Django](https://www.djangoproject.com/)
 
-**April 26 2024:** Update node version to 16
+## Libraries
+- Addtional libraries that were used are the django-countries library
 
-**September 20 2023:** Update Python version to 3.9.17.
+# Testing
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+- [Testing file](TESTING.md)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+# Deployment
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+## Github Deployment
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+The website was stored using GitHub for storage of data and version control. To do this I did the following;
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+After each addition, change or removal of code, in the terminal within your IDE (I used Gitpod for this project) type:
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+- git add .
+- git commit -m "meaningful commit message"
+- git push
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+The files are now available to view within my github repository.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+To bring all models up to date I regularly needed to run:
+- python3 manage.py makemigrations
+- python3 manage.py migrate
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+Whenever I made changes to my CSS or JavaScript files I needed to run:
+- python3 manage.py collectstatic
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Cloning and Forking
+### How to Clone
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+To clone the repository:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+1. Login (or signup) to Github.
+2. Go to my repository for the project, [drf-api-project5](https://github.com/gauravjagpal/drf-api-project5).
+3. Click on the green 'Code' button. Choose whether you would like to clone with HTTPS, SSH, or GitHub CLI, and copy the link shown.
+4. Launch the terminal within your code editor and set the current working directory to the desired location for the cloned directory.
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### How to Fork
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+To fork the repository:
 
-------
+1. Login (or signup) to Github.
+2. Go to my repository for the project, [drf-api-project5](https://github.com/gauravjagpal/drf-api-project5).
+3. Click the Fork button in the top right corner.
 
-## FAQ about the uptime script
 
-**Why have you added this script?**
+### Repository deployment via Heroku
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+- On the [Heroku Dashboard](https://dashboard.heroku.com) page, click New and then select Create New App from the drop-down menu.
+- When the next page loads insert the App name and Choose a region. Then click 'Create app'
+- In the settings tab click on Reveal Config Vars and add the key Port and the value 8000. The credentials for this app were:
 
-**How will this affect me?**
+1. Cloudinary URL
+2. Database URL
+3. SECRET_KEY
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+- Below this click Add buildpack and choose python.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### Deployment of the app
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+- Click on the Deploy tab and select Github-Connect to Github.
+- Enter the repository name and click Search.
+- Choose the repository that holds the correct files and click Connect.
+- A choice is offered between manual or automatic deployment whereby the app is updated when changes are pushed to GitHub. Select automatic (when testing you can also choose to do a manual refresh to speed things up)
+- Once the deployment method has been chosen the app will be built and can be launched by clicking the Open app button which will either appear below the build information window or in the top right of the page.
 
-**So….?**
+___
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+## Credits
 
-**Can I opt out?**
+This project was based on the Code Institute's - drf-api setup. I used this template and manipulated it do add features relevant to my project.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+When running into blockers I often referred to Stack Overflow for inspiration
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+___
 
-**Anything more?**
+## Acknowledgments and Thanks
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+Massive thanks to the team at Code Institute for helping me learn to debug issues independently.
