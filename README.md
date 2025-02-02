@@ -14,7 +14,7 @@ This is the backend project for the Plan-et Continentally app, gives users the a
 [Link to front end site](https://plan-et-continentally-d407d6f9ae7a.herokuapp.com/)
 
 ## CONTENTS
-- [drf-api-project5](#gauravs-book-reviews)
+- [drf-api-project5](#drf-api-project5)
   - [CONTENTS](#contents)
   - [Site Objectives](#site-objectives)
 - [User Stories](#user-stories)
@@ -50,8 +50,7 @@ The user stories are documented in the front end repository, [Link Here](https:/
 
 ## Visitor Goals
 
-- When not logged in, view all posts/filter down
-- When logged in, visit all posts/filter down.
+- View all posts and filter them (both logged in and logged out)
 - Create Posts
 - Create a trip
 - View own trips
@@ -82,7 +81,7 @@ Here are the technologies used to build this project:
 - [Django](https://www.djangoproject.com/)
 
 ## Libraries
-- Addtional libraries that were used are the django-countries library
+- Additional libraries that were used are the django-countries library
 
 # Testing
 
@@ -153,7 +152,7 @@ ___
 
 ## Credits
 
-This project was based on the Code Institute's - drf-api setup. I used this template and manipulated it do add features relevant to my project.
+This project was based on the Code Institute's - drf-api setup. I used this template and manipulated it to add features relevant to my project.
 
 When running into blockers I often referred to Stack Overflow for inspiration
 
