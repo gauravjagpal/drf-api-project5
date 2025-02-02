@@ -20,6 +20,8 @@ class TripList(generics.ListCreateAPIView):
     ordering = ['-id']
     filterset_fields = [
         'owner__profile',
+    ]
+    search_fields = [
         'country',
         'trip',
         'activities'
