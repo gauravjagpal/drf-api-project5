@@ -30,3 +30,5 @@ Below is the validation results from using the PEP8 validator. The most concerni
 | trips > serializers.py | No space around operator | Add space between owner = serializers |
 | trips > views.py | Expected 2 empty lines, only has one | Add another line |
 
+## Manual testing
+Manual tests were added for the trips app
