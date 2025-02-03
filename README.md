@@ -83,6 +83,10 @@ Here are the technologies used to build this project:
 ## Libraries
 - Additional libraries that were used are the django-countries library
 
+## Custom Fields
+- In my models for trips and posts, I have added the CountryFields. This is used to bring in Country information from the backend.
+- In the trips model, I have also added a CharField for activities so that users can add a list of activities they want to do on their trip.
+
 # Testing
 
 - [Testing file](TESTING.md)
