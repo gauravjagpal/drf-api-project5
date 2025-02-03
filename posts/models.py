@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
+
 class Post(models.Model):
     """
     Set a default image and a post model related to the owner

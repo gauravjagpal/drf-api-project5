@@ -49,8 +49,10 @@ JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER' : 'drf_api_project_5.serializers.CurrentUserSerializer'
+    'USER_DETAILS_SERIALIZER':
+    'drf_api_project_5.serializers.CurrentUserSerializer'
 }
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -60,16 +62,18 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
-'localhost',
-'https://plan-et-continentally-d407d6f9ae7a.herokuapp.com',
-'drf-api-project-5-47dcc9e35444.herokuapp.com',
-'http://localhost:3000',
-os.environ.get('ALLOWED_HOST'),
+    'localhost',
+    'https://plan-et-continentally-d407d6f9ae7a.herokuapp.com',
+    'drf-api-project-5-47dcc9e35444.herokuapp.com',
+    'http://localhost:3000',
+    os.environ.get('ALLOWED_HOST'),
 ]
 
 if "CLIENT_ORIGIN" in os.environ:
-    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN"),
-    "http://localhost:3000"]
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get("CLIENT_ORIGIN"),
+        "http://localhost:3000"
+    ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.codeinstitute-ide\.net$"
@@ -159,22 +163,27 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+            ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 

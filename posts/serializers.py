@@ -3,6 +3,7 @@ from posts.models import Post
 from favourites.models import Favourite
 from django_countries.serializer_fields import CountryField
 
+
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -11,7 +12,7 @@ class PostSerializer(serializers.ModelSerializer):
     favourite_id = serializers.SerializerMethodField()
     favourites_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    country=CountryField()
+    country = CountryField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -29,8 +30,7 @@ class PostSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
-    
+
     def get_favourite_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -39,24 +39,24 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return favourite.id if favourite else None
         return None
-    
+
     def validate_country(self, value):
         """
-        Validate the country field, defaulting to the current value if not provided.
+        Validate the country field,
+        defaulting to the current value if not provided.
         """
-        # If the value is not set during update, use the existing instance value
+        # If the value is not set during update, use the existing value
         if not value and self.instance:
             return self.instance.country
         return value
-    
+
     def to_representation(self, instance):
         """Modify the representation to add the country_name field."""
         # Get the default representation from the parent class
         representation = super().to_representation(instance)
-        # Add the country name to the representation
-        representation['country'] = instance.country.name  # Country name instead of code
+        # Add the country name to the representation instead of country code
+        representation['country'] = instance.country.name
         return representation
-
 
     class Meta:
         model = Post
