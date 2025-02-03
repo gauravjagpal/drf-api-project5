@@ -9,9 +9,9 @@ This is the backend project for the Plan-et Continentally app, gives users the a
 
 
 
-[Link to live site](https://drf-api-project-5-47dcc9e35444.herokuapp.com/)
+[Link to live Back End site](https://drf-api-project-5-47dcc9e35444.herokuapp.com/)
 
-[Link to front end site](https://plan-et-continentally-d407d6f9ae7a.herokuapp.com/)
+[Link to Front End site](https://plan-et-continentally-d407d6f9ae7a.herokuapp.com/)
 
 ## CONTENTS
 - [drf-api-project5](#drf-api-project5)
@@ -23,6 +23,8 @@ This is the backend project for the Plan-et Continentally app, gives users the a
   - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
 - [Programming Languages, Frameworks and Libraries Used](#programming-languages-frameworks-and-libraries-used)
+  - [Libraries](#libraries)
+  - [Custom Fields](#custom-fields)
 - [Testing](#testing)
 - [Deployment](#deployment)
   - [Github Deployment](#github-deployment)
