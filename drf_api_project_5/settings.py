@@ -66,6 +66,7 @@ ALLOWED_HOSTS = [
     'https://plan-et-continentally-d407d6f9ae7a.herokuapp.com',
     'drf-api-project-5-47dcc9e35444.herokuapp.com',
     'http://localhost:3000',
+    '127.0.0.1',
     os.environ.get('ALLOWED_HOST'),
 ]
 
