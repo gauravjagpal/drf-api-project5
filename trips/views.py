@@ -38,7 +38,7 @@ class TripList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class TripDetail(generics.RetrieveUpdateAPIView):
+class TripDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TripSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Trip.objects.all()
