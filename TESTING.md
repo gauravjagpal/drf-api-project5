@@ -32,3 +32,5 @@ Below is the validation results from using the PEP8 validator. The most concerni
 
 ## Manual testing
 Manual tests were added for the trips app
+
+Tests were also added to the trips and posts section for automated testing.
