@@ -7,7 +7,10 @@ from PIL import Image
 import io
 class TripViewTests(APITestCase):
     def setUp(self):
-        User.objects.create_user(username='Alex', password='pass')
+        self.alex = User.objects.create_user(username='Alex', password='pass')
+        self.bob = User.objects.create_user(username='Bob', password='pass')
+        self.alex_trip = Trip.objects.create(owner=self.alex, trip="Alex's trip", country="IN")
+        self.bob_trip = Trip.objects.create(owner=self.bob, trip="Bob's trip", country="US")
     
     def test_can_list_trip(self):
         Alex = User.objects.get(username='Alex')
@@ -48,3 +51,24 @@ class TripViewTests(APITestCase):
             'image': image
             })
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    
+    def test_logged_in_user_can_delete_own_trip(self):
+        self.client.login(username='Alex', password='pass')
+        initial_count = Trip.objects.count()
+        # Send the DELETE request to delete Alex's trip
+        response = self.client.delete(f'/trips/{self.alex_trip.id}/')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        # Check that Alex's trip is deleted, and only Bob's trip remains
+        self.assertEqual(Trip.objects.count(), initial_count - 1)
+
+
+    def test_user_cannot_delete_others_trip(self):
+        Trip.objects.all().delete()
+        another_user = User.objects.create_user(username='Bobby', password='pass')
+        another_trip = Trip.objects.create(owner=another_user, trip='Bobby\'s trip', country='US')
+        self.client.login(username='Alex', password='pass')
+        response = self.client.delete(f'/trips/{another_trip.id}/')
+        # Check that the status code is 403 (Forbidden), since Alex should not be able to delete Bob's trip
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        # Verify that the trip still exists
+        self.assertEqual(Trip.objects.count(), 2)  # Both trips should still exist
