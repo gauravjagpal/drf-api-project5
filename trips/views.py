@@ -33,6 +33,8 @@ class TripList(generics.ListCreateAPIView):
         'activities'
     ]
 
+    permission_classes = [permissions.IsAuthenticated]
+
     def perform_create(self, serializer):
         # Associate the logged-in user as the owner of the trip
         serializer.save(owner=self.request.user)

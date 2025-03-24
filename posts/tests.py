@@ -30,7 +30,7 @@ class PostListViewTests(APITestCase):
         self.client = APIClient()
         user = User.objects.get(username='Alex')
         self.client.force_authenticate(user=user)
-        image = self.generate_test_image()  # Use real image
+        image = self.generate_test_image()
         response = self.client.post(
             '/posts/',
             {
